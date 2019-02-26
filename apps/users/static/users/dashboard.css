@@ -1,0 +1,29 @@
+body{
+    padding: 25px;
+}
+#header{
+    height: 50px;
+    width: 900px;
+    padding: 10px;
+    border: 2px solid black;
+    border-bottom: none;
+}
+#header h4, #header p, #header a{
+    display: inline-block;
+    vertical-align: top;
+}
+#header h4{
+    margin-right: 175px;
+}
+#header p{
+    margin-right: 45px;
+}
+#header a{
+    margin-right: 65px;
+}
+#content{
+    min-height: 500px;
+    width: 900px;
+    border: 2px solid black;
+    padding: 25px 75px;
+}
