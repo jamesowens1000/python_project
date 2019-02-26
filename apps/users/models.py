@@ -1,4 +1,5 @@
 from django.db import models
+import bcrypt
 
 class UserManager(models.Manager):
     def validator(self, postData, pageType, userEmail):
@@ -12,10 +13,14 @@ class UserManager(models.Manager):
 
         elif pageType == 'login': #Login Checks
 
-            checkUser = User.objects.filter(email=postData['log-email'], password=postData['log-pword'])
+            checkUser = User.objects.filter(email=postData['log-email'])
             if (len(checkUser) < 1):
                 #If there is no match, we return to the reg/login page with an error message, as stated below
-                errors['log-invalid'] = "The email and password combination entered do not match a record in our database"
+                errors['log-invalid'] = "The email entered does not match a record in our database"
+            else:
+                checkUser = User.objects.get(email=postData['log-email'])
+                if not bcrypt.checkpw(postData['log-password'].encode(), checkUser.password.encode()):
+                    errors['log-invalid'] = "The email and password combination entered does not match a record in our database"
         
         elif pageType == 'update': #Update Page Checks
             
@@ -32,11 +37,11 @@ class User(models.Model):
     password = models.CharField(max_length=255)
     first_name = models.CharField(max_length=255)
     last_name = models.CharField(max_length=255)
-    street_address = models.CharField(max_length=255)
-    city = models.CharField(max_length=255)
-    state = models.CharField(max_length=255)
-    zip_code = models.CharField(max_length=255)
-    phone = models.CharField(max_length=255)
+    street_address = models.CharField(max_length=255,null=True)
+    city = models.CharField(max_length=255,null=True)
+    state = models.CharField(max_length=255,null=True)
+    zip_code = models.CharField(max_length=255,null=True)
+    phone = models.CharField(max_length=255,null=True)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
     objects = UserManager()
