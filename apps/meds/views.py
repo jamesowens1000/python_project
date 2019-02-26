@@ -3,12 +3,10 @@ from datetime import datetime
 from dateutil import relativedelta
 
 def med_dashboard(request):
-    #if user_id not in request.session:
-     #   return redirect('login and reg page')
-    
-    
-    
-    return render(request, "meds/med_dashboard.html")
+    if 'user_id' not in request.session:
+        return redirect("/")
+    else:
+        return render(request, "meds/med_dashboard.html")
 
 def child(request):#add a child on this page
     
@@ -35,23 +33,14 @@ def vaccines(request): #button
 
 def seevaccines(request):#page
     
-
     context={
  
     }
-        
-        # if request.session["months_old"] == 0:
-            
-
-
+    
+    # if request.session["months_old"] == 0:
+    
     return render(request, 'meds/vaccinedue.html')
 
 def logout(request):
     request.session.clear()
-
-    redirect('/')#main login and reg page
-
-
-
-
-
+    return redirect('/')#main login and reg page
