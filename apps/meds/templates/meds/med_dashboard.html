@@ -1,70 +1,59 @@
 <!DOCTYPE html>
 <html>
+    <head>
+        <meta charset="utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>Vaccines</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS"
+            crossorigin="anonymous">
+        <!-- <link rel="stylesheet" type="text/css" href="/static/index.css">  -->
 
-<head>
-    <meta charset="utf-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Vaccines</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS"
-        crossorigin="anonymous">
-    <!-- <link rel="stylesheet" type="text/css" href="/static/index.css">  -->
-
-    <style>
-        * {
-            text-align: center;
-        }
-    </style>
-
-</head>
-
-<body>
-
-    <div class="container">
-        <div class="row">
-            <div class="col">
-                <h3>VaccinApp</h3>
-            </div>
-            <div class="col">
-            </div>
-            <div class="col">
-                <p> <a href="/logout">Logout</a> | <a href="/update">Change Info</a></p>
+        <style>
+            * {
+                text-align: center;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="container">
+            <div class="row">
+                <div class="col">
+                    <h3>VaccinApp</h3>
+                </div>
+                <div class="col">
+                </div>
+                <div class="col">
+                    <p> <a href="/dashboard/logout">Logout</a> | <a href="/edit_page">Change Info</a></p>
+                </div>
             </div>
         </div>
-    </div>
 
-    <div class="container">
-        <div class="row">
-            <div class="col">
+        <div class="container">
+            <div class="row">
+                <div class="col">
 
-                <p>put main registeration info here</p>
-            </div>
-
-
-
-
-            <div class="col">
-                <a href="/child">Add child</a>
-
-                <div>
-                    <p>child 1 will appear here--need a loop</p>
-
+                    <p>put main registeration info here</p>
                 </div>
 
-                <div>
-                    <p>child 2</p>
+                <div class="col">
+                    <a href="/dashboard/child">Add child</a>
 
+                    <div>
+                        <p>child 1 will appear here--need a loop</p>
+
+                    </div>
+
+                    <div>
+                        <p>child 2</p>
+
+                    </div>
+                    <div>
+                        <p>child 3</p>
+
+                    </div>
                 </div>
-                <div>
-                    <p>child 3</p>
-
-                </div>
-
             </div>
         </div>
-    </div>
-
-
-</body>
-
+    </body>
 </html>
