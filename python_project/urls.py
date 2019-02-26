@@ -18,7 +18,7 @@ from django.conf.urls import url, include
 urlpatterns = [
     #URLs to other apps urls.py files
     #CHANGE THESE AS NEEDED
-    url(r'^', include('apps.users.urls')),
     url(r'^appointments', include('apps.appts.urls')),
-    url(r'^medicals', include('apps.meds.urls')),
+    url(r'^med_dashboard', include('apps.meds.urls')),
+    url(r'^', include('apps.meds.urls')),
 ]

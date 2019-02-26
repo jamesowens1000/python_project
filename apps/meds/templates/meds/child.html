@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Vaccines</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS"
+        crossorigin="anonymous">
+    <!-- <link rel="stylesheet" type="text/css" href="/static/index.css">  -->
+
+    <style>
+        * {
+            text-align: center;
+        
+        }
+
+        .form-group{
+            float:left;
+        }
+
+        .around_form{
+            height:500px;
+            width: 260px;
+            margin-left:600px;
+        }
+
+
+
+
+
+    </style>
+
+</head>
+
+<body>
+
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <h3>VaccinApp</h3>
+            </div>
+            <div class="col">
+            </div>
+            <div class="col">
+                <p><a href="/logout">Logout</a> | <a href="/update">Change Info</a></p>
+            </div>
+        </div>
+    </div>
+
+
+
+    <h4>Tell us about the child.</h4>
+    <br>
+    <div class="around_form">
+        <form action='/addchild' method='post'>
+
+
+                {% csrf_token %}
+                <div class="form-group">
+                    First Name: <input type="text" name='child_first'>
+                </div>
+                <div class="form-group">
+                    Last Name: <input type="text" name='child_last'>
+                </div>
+                <div class="form-group">
+                    Birthday: <input type="date" name='dob'>
+                </div>
+                <div class="form-group">
+                    Gender: <input type="radio" name="gender" value="male">Male
+                    <input type="radio" name="gender" value="female">Female
+                </div>
+                <div class="form-group">
+                    Height: <input type="number" name="feet" style=" width: 50px;"> feet
+                    <input type="number" name="inches" style=" width: 50px;"> inches
+                </div>
+                <div class="form-group">
+                    Weight: <input type="number" name="weight" style=" width: 50px;"> pounds <br>
+                </div>
+                <div class="form-group">
+                    Blood Type: <select class="form-control-sm" name="blood">
+                        <option value="o_pos">O+</option>
+                        <option value="o_neg">O-</option>
+                        <option value="a_neg">A-</option>
+                        <option value="a_pos">A+</option>
+                        <option value="b_neg">B-</option>
+                        <option value="b_pos">B+</option>
+                        <option value="ab_neg">AB-</option>
+                        <option value="ab_pos">AB+</option>
+                        <option value="idk">I don't know</option>
+                    </select>
+                    <br>
+
+                </div>
+
+                <div class="form-group">
+                    <button type="submit" class="btn btn-warning"> Add Child </button>
+                </div>
+        </form>
+
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</body>
+
+</html>
