@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Vaccines</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS"
+        crossorigin="anonymous">
+    <!-- <link rel="stylesheet" type="text/css" href="/static/index.css">  -->
+
+    <style>
+        * {
+            text-align: center;
+        }
+    </style>
+
+</head>
+
+<body>
+    <div class="border">
+        <div class="container">
+            <div class="row">
+                <div class="col">
+                    <h3>VaccinApp</h3>
+                </div>
+                <div class="col">
+                </div>
+                <div class="col">
+                    <p>Welcome, {{user_info.first_name}} | <a href="/logout">Logout</a> | <a href="/update">Change Info</a></p>
+                </div>
+            </div>
+        </div>
+
+        <div class="col">
+            <h1>child's name </h1>
+            <table class="table table-striped">
+                <tr>
+                    <th>Upcoming Vaccinations</th>
+                </tr>
+
+                <tr>
+                    <td>Hepatitis B (HepB)</td>
+                    <td>Diphtheria, tetanus, & acellular pretussis (dtap)</td>
+                </tr>
+
+                <tr>
+                    <td>Rotavirus (RV)</td>
+                    <td>Diphtheria, tetanus, & acellular pretussis (dtap)</td>
+                    <td>Haemophilus influenzae type b (Hib</td>
+                    <td>Pneumococcal conjugate (PCV13)</td>
+                </tr>
+
+                <tr>
+                    <td>Haemophilus influenzae type b (Hib</td>
+                    <td>Rotavirus (RV)</td>
+                    <td>Inactivated poliovirus (IPV)</td>
+                    <td>Pneumococcal conjugate (PCV13)</td>
+                </tr>
+
+
+               
+                <tr>
+                    <td>Diphtheria, tetanus, & acellular pretussis (dtap)</td>
+                    <td>Pneumococcal conjugate (PCV13)</td>
+                    <td>Hepatitis B (HepB)</td>
+                    <td>Inactivated poliovirus (IPV)</td>
+                    <td>Influenza</td>
+                </tr>
+
+            </table>
+        </div>
+
+
+
+
+
+
+
+
+        <div class="col">
+            <table class="table table-striped">
+                <tr>
+                    <th>Overdue Vaccinations</th>
+
+                </tr>
+
+                <tr>
+                    <td></td>
+                </tr>
+
+
+
+            </table>
+        </div>
+    </div>
+</body>
+
+</html>
