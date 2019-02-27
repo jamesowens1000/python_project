@@ -1,19 +1,21 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
     <head>
-    <title>Index Page</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
-    {% load static %}
-    <link href="{% static 'users/index.css' %}" rel="stylesheet" type="text/css" media="all" />
-    <script src="{% static 'users/index.js' %}"></script>
-    <!--web-fonts-->
-    <link href='//fonts.googleapis.com/css?family=Jura:400,300,500,600' rel='stylesheet' type='text/css'>
-    <!--//web-fonts-->
+        <title>VaccinApp - Login / Register</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        
+        {% load static %}
+        <!-- CSS links -->
+        <link href='//fonts.googleapis.com/css?family=Jura:400,300,500,600' rel='stylesheet' type='text/css'>
+        <link href="{% static 'users/index.css' %}" rel="stylesheet" type="text/css" media="all" />
+        <!-- Script links -->
+        <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+        <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+        <script src="{% static 'users/index.js' %}"></script>
     </head>
     <body>
-        <h1>Login / Register</h1>
+        <h1>VaccinApp</h1>
         <div class="main">
             {% if messages %}
             <ul class="messages">
@@ -23,7 +25,7 @@
             </ul>
             {% endif %}
             <div class="w3">
-                <div class="signin-form profile">
+                <div class="signin-form">
                     <h3>Login</h3>
                     <div class="login-form">
                         <form id="login" action="/login" method="POST">
@@ -35,7 +37,7 @@
                             </div>
                         </form>
                     </div>
-                    <p><a> Don't have an account? Begin registration to the right</a></p>
+                    <p><a>Don't have an account? Begin registration to the right</a></p>
                 </div>
             </div>
             <div class="agile">
@@ -53,6 +55,8 @@
                         </form>
                     </div>
                     <p><a href="#"> By clicking register, I agree to your terms</a></p>
+                    <div class="space">
+                    </div>
                 </div>
             </div>
             <div class="clear"></div>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>VaccinApp - Edit Account Information</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+        {% load static %}
+        <link href="{% static 'users/edit.css' %}" rel="stylesheet" type="text/css" media="all" />
+        <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+        <script src="{% static 'users/edit.js' %}"></script>
+        <!--web-fonts-->
+        <link href='//fonts.googleapis.com/css?family=Jura:400,300,500,600' rel='stylesheet' type='text/css'>
+        <!--//web-fonts-->
+    </head>
+    <body>
+        <div id="header">
+            <a href="/dashboard">Back</a> | <a href="/logout">Logout</a>
+        </div>
+        <form action='/users/update' method='post'>
+            {% csrf_token %}
+            <h4>Edit My Account Info</h4>
+            <p>First Name</p>
+            <input type="text" name="fname" value="{{ thisUser.first_name }}">
+            <p>Last Name</p>
+            <input type="text" name="lname" value="{{ thisUser.last_name }}">
+            <p>Email</p>
+            <input type="text" name="email" value="{{ thisUser.email }}">
+            <br>
+            <br>
+            <input type="submit" value="Update">
+            {% if messages %}
+            <ul class="messages">
+                {% for message in messages %}
+                <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+                {% endfor %}
+            </ul>
+            {% endif %}
+        </form>
+    </body>
+</html>
