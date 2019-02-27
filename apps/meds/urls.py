@@ -5,8 +5,9 @@ from . import views
                     
 urlpatterns = [
     url(r'^$', views.med_dashboard),
-    url(r'child$', views.child),
     url(r'addchild$', views.addchild),
-    url(r'^vaccines$', views.vaccines),
-    url(r'^seevaccines$', views.seevaccines),
+    url(r'child$', views.child),
+    url(r'viewvaccine/(?P<dependent_id>\d+)$', views.viewvaccine),
+    url(r'seevaccines/(?P<dependent_id>\d+)$', views.seevaccines),
+    url(r'delete/(?P<dependent_id>\d+)$', views.delete),
 ]
