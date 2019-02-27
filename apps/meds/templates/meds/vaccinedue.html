@@ -28,45 +28,22 @@
                 <div class="col">
                 </div>
                 <div class="col">
-                    <p>Welcome, {{user_info.first_name}} | <a href="/logout">Logout</a> | <a href="/update">Change Info</a></p>
+                    <p>Welcome, {{user_info.first_name}} | <a href="/dashboard">Back</a> | <a href="/update">Update Info</a> | <a href="/logout">Logout</a></p>
                 </div>
             </div>
         </div>
 
         <div class="col">
-            <h1>child's name </h1>
+         
+            <h1>{{child_info.first_name}} {{child_info.last_name}}</h1>
+
             <table class="table table-striped">
                 <tr>
                     <th>Upcoming Vaccinations</th>
                 </tr>
 
                 <tr>
-                    <td>Hepatitis B (HepB)</td>
-                    <td>Diphtheria, tetanus, & acellular pretussis (dtap)</td>
-                </tr>
-
-                <tr>
-                    <td>Rotavirus (RV)</td>
-                    <td>Diphtheria, tetanus, & acellular pretussis (dtap)</td>
-                    <td>Haemophilus influenzae type b (Hib</td>
-                    <td>Pneumococcal conjugate (PCV13)</td>
-                </tr>
-
-                <tr>
-                    <td>Haemophilus influenzae type b (Hib</td>
-                    <td>Rotavirus (RV)</td>
-                    <td>Inactivated poliovirus (IPV)</td>
-                    <td>Pneumococcal conjugate (PCV13)</td>
-                </tr>
-
-
-               
-                <tr>
-                    <td>Diphtheria, tetanus, & acellular pretussis (dtap)</td>
-                    <td>Pneumococcal conjugate (PCV13)</td>
-                    <td>Hepatitis B (HepB)</td>
-                    <td>Inactivated poliovirus (IPV)</td>
-                    <td>Influenza</td>
+                    <td>...Immunization Here...</td>
                 </tr>
 
             </table>

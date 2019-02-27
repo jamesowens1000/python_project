@@ -1,59 +1,74 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="utf-8" />
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title>Vaccines</title>
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS"
-            crossorigin="anonymous">
-        <!-- <link rel="stylesheet" type="text/css" href="/static/index.css">  -->
 
-        <style>
-            * {
-                text-align: center;
-            }
-        </style>
-    </head>
-    <body>
-        <div class="container">
-            <div class="row">
-                <div class="col">
-                    <h3>VaccinApp</h3>
-                </div>
-                <div class="col">
-                </div>
-                <div class="col">
-                    <p> <a href="/dashboard/logout">Logout</a> | <a href="/edit_page">Change Info</a></p>
-                </div>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Vaccines</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS"
+        crossorigin="anonymous">
+    <!-- <link rel="stylesheet" type="text/css" href="/static/index.css">  -->
+
+    <style>
+        * {
+            text-align: center;
+        }
+
+        ul{
+            list-style-type: none;
+        }
+
+        #vs, #vs:hover{
+               color:black;
+               text-decoration: none;
+           }
+
+        #addchild{
+            color:red;
+        }
+
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <h3>VaccinApp</h3>
+            </div>
+            <div class="col">
+            </div>
+            <div class="col">
+                <p> <a href="/edit_page">Update Info</a> | <a href="/dashboard/logout">Logout</a></p>
             </div>
         </div>
+    </div>
 
-        <div class="container">
-            <div class="row">
-                <div class="col">
+    <div class="container">
+        <div class="row">
+            <div class="col">
 
-                    <p>put main registeration info here</p>
-                </div>
 
-                <div class="col">
-                    <a href="/dashboard/child">Add child</a>
 
-                    <div>
-                        <p>child 1 will appear here--need a loop</p>
 
-                    </div>
+            </div>
 
-                    <div>
-                        <p>child 2</p>
+            <div class="col">
+                <a id="addchild" href="/dashboard/child">Add child</a>
+                <ul>
 
-                    </div>
-                    <div>
-                        <p>child 3</p>
+                    {% for child in all_children %}
+                        <li>Name: <b>{{child.first_name}} {{child.last_name}}</b>  |  {% if Dependent.user.id == request.session.id %}<a href="/dashboard/delete/{{child.id}}">Delete</a>{% endif %}</li>
+                        <li>Birthday: {{child.dob|date:"F d, Y"}}</li>
+                        <li>Gender: {{child.gender}}</li>
+                        <li><button><a id="vs" href="/dashboard/viewvaccine/{{child.id}}">Vaccine Schedule</a></button></li>
+                    {% endfor %}
+                </ul>
 
-                    </div>
-                </div>
             </div>
         </div>
-    </body>
+    </div>
+</body>
+
 </html>
