@@ -7,4 +7,5 @@ urlpatterns = [
     url(r'^login$', views.login),
     url(r'^edit_page$', views.edit_page),
     url(r'^users/update$', views.update),
+    url(r'^logout$', views.logout),
 ]

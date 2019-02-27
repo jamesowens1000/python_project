@@ -10,6 +10,4 @@ urlpatterns = [
     url(r'viewvaccine/(?P<dependent_id>\d+)$', views.viewvaccine),
     url(r'seevaccines/(?P<dependent_id>\d+)$', views.seevaccines),
     url(r'delete/(?P<dependent_id>\d+)$', views.delete),
-    url(r'logout$', views.logout),
 ]
-
