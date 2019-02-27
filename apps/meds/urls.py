@@ -9,5 +9,4 @@ urlpatterns = [
     url(r'addchild$', views.addchild),
     url(r'^vaccines$', views.vaccines),
     url(r'^seevaccines$', views.seevaccines),
-    url(r'logout$', views.logout),
 ]
