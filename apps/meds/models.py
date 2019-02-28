@@ -29,7 +29,7 @@ class Age_Group(models.Model):
     name = models.CharField(max_length=255)
     min_age = models.CharField(max_length=255)
     max_age = models.CharField(max_length=255)
-    vaccinations=models.ManyToManyField(Vaccination, related_name="age_groups")
+    vaccinations = models.ManyToManyField(Vaccination, related_name="age_groups")
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
