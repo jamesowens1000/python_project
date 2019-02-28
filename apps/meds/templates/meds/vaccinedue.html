@@ -14,6 +14,16 @@
         * {
             text-align: center;
         }
+
+        h6 {
+            color: red;
+            margin-top: -12px;
+        }
+
+        #vs,
+        #vs:hover {
+            color: black;
+            text-decoration: none;
     </style>
 
 </head>
@@ -24,52 +34,39 @@
             <div class="row">
                 <div class="col">
                     <h3>VaccinApp</h3>
+                    <h6>a shot at good health</h6>
                 </div>
                 <div class="col">
                 </div>
                 <div class="col">
-                    <p>Welcome, {{user_info.first_name}} | <a href="/dashboard">Back</a> | <a href="/update">Update Info</a> | <a href="/logout">Logout</a></p>
+                    <a href="/dashboard">Back</a> | <a href="/edit_page">Edit Account Info</a> | <a href="/logout">Logout</a></p>
                 </div>
             </div>
         </div>
 
         <div class="col">
-         
+
             <h1>{{child_info.first_name}} {{child_info.last_name}}</h1>
 
             <table class="table table-striped">
+                <h3>Upcoming Vaccinations</h3><button><a id="vs" href="/test">Make Appointment</a></button>
                 <tr>
-                    <th>Upcoming Vaccinations</th>
+                    <th>Vaccine</th>
+                    <th>Abbreviation</th>
+                    <th>Description</th>
                 </tr>
-
+                {% for vac in child_vacs %}
                 <tr>
-                    <td>...Immunization Here...</td>
-                </tr>
+                    <td>{{vac.name}}</td>
+                    <td>{{vac.abbreviation}}</td>
+                    <td>{{vac.description}}</td>
 
+                </tr>
+               {% endfor %}
             </table>
         </div>
 
 
-
-
-
-
-
-
-        <div class="col">
-            <table class="table table-striped">
-                <tr>
-                    <th>Overdue Vaccinations</th>
-
-                </tr>
-
-                <tr>
-                    <td></td>
-                </tr>
-
-
-
-            </table>
         </div>
     </div>
 </body>

@@ -22,6 +22,9 @@ class Vaccination(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
+    def __str__(self):
+        return f"Vaccination: {self.id} {self.name}"
+
 class Age_Group(models.Model):
     name = models.CharField(max_length=255)
     min_age = models.CharField(max_length=255)
@@ -29,3 +32,6 @@ class Age_Group(models.Model):
     vaccinations = models.ManyToManyField(Vaccination, related_name="age_groups")
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
+
+    def __str__(self):
+        return f"Age Groups: {self.id} {self.name}"

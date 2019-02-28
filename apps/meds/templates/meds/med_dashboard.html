@@ -28,6 +28,11 @@
             color:red;
         }
 
+        h6{
+            color:red;
+            margin-top:-12px;
+        }
+
     </style>
 </head>
 
@@ -36,11 +41,15 @@
         <div class="row">
             <div class="col">
                 <h3>VaccinApp</h3>
+                <h6>a shot at good health</h6>
             </div>
             <div class="col">
+                    <p>Welcome, {{users.first_name}}  {{user.last_name}}</p>
             </div>
             <div class="col">
+
                 <p> <a href="/edit_user">Edit Account Info</a> | <a href="/logout">Logout</a></p>
+
             </div>
         </div>
     </div>
@@ -49,20 +58,26 @@
         <div class="row">
             <div class="col">
 
+                
+
+
 
 
 
             </div>
 
             <div class="col">
-                <a id="addchild" href="/dashboard/child">Add child</a>
+                <a id="addchild" href="/dashboard/child">ADD A CHILD</a>
                 <ul>
 
                     {% for child in all_children %}
-                        <li>Name: <b>{{child.first_name}} {{child.last_name}}</b>  |  {% if Dependent.user.id == request.session.id %}<a href="/dashboard/delete/{{child.id}}">Delete</a>{% endif %}</li>
+                        {% if child.user.id == request.session.user_id %}
+                        <li><b>{{child.first_name}} {{child.last_name}}</b> </li>
                         <li>Birthday: {{child.dob|date:"F d, Y"}}</li>
                         <li>Gender: {{child.gender}}</li>
                         <li><button><a id="vs" href="/dashboard/viewvaccine/{{child.id}}">Vaccine Schedule</a></button></li>
+                        {% endif %}
+                        <li>{% if child.user.id == request.session.user_id %}<a href="/dashboard/delete/{{child.id}}">Delete</a> | <a href="/dashboard/edit_child/{{child.id}}">Edit Child Info</a>{% endif %}</li>
                     {% endfor %}
                 </ul>
 
