@@ -14,7 +14,7 @@ class Dependent(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
-class Vaccinations(models.Model):
+class Vaccination(models.Model):
     name = models.CharField(max_length=255)
     abbreviation = models.CharField(max_length=255)
     description = models.TextField()
@@ -22,9 +22,10 @@ class Vaccinations(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
-class Age_group(models.Model):
+class Age_Group(models.Model):
     name = models.CharField(max_length=255)
     min_age = models.CharField(max_length=255)
     max_age = models.CharField(max_length=255)
+    vaccinations = models.ManyToManyField(Vaccination, related_name="age_groups")
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)

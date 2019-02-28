@@ -4,15 +4,15 @@
         <title>VaccinApp - Login / Register</title>
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-        
         {% load static %}
         <!-- CSS links -->
         <link href='//fonts.googleapis.com/css?family=Jura:400,300,500,600' rel='stylesheet' type='text/css'>
-        <link href="{% static 'users/index.css' %}" rel="stylesheet" type="text/css" media="all" />
+        <link href="{% static 'users/css/index.css' %}" rel="stylesheet" type="text/css" media="all" />
+        <link rel="shortcut icon" href="{%  static 'users/images/favicon.ico' %}">
         <!-- Script links -->
         <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
         <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
-        <script src="{% static 'users/index.js' %}"></script>
+        <script src="{% static 'users/js/index.js' %}"></script>
     </head>
     <body>
         <h1>VaccinApp</h1>
@@ -30,8 +30,8 @@
                     <div class="login-form">
                         <form id="login" action="/login" method="POST">
                             {% csrf_token %}
-                            <input type="text" name="log-email" placeholder="E-mail" required="">
-                            <input type="password" name="log-password" placeholder="Password" required="">
+                            <input type="text" name="log-email" placeholder="E-mail" required maxlength="50">
+                            <input type="password" name="log-password" placeholder="Password" required maxlength="50">
                             <div class="tp">
                                 <input type="submit" value="LOGIN NOW">
                             </div>
@@ -41,16 +41,16 @@
                 </div>
             </div>
             <div class="agile">
-                <div class="signin-form profile">
+                <div class="signin-form">
                     <h3>Register</h3>
                     <div class="login-form">
                         <form id="reg" action="/register" onsubmit="return validateForm()" method="POST">
                             {% csrf_token %}
-                            <input type="text" name="reg-fname" placeholder="First Name" required="">
-                            <input type="text" name="reg-lname" placeholder="Last Name" required="">
-                            <input type="text" name="reg-email" placeholder="E-mail" required="">
-                            <input type="password" name="reg-password" placeholder="Password" required="">
-                            <input type="password" name="conf-password" placeholder="Confirm Password" required="">
+                            <input type="text" name="reg-fname" placeholder="First Name" required maxlength="50">
+                            <input type="text" name="reg-lname" placeholder="Last Name" required maxlength="50">
+                            <input type="text" name="reg-email" placeholder="E-mail" required maxlength="50">
+                            <input type="password" name="reg-password" placeholder="Password" required maxlength="50">
+                            <input type="password" name="conf-password" placeholder="Confirm Password" required maxlength="50">
                             <input type="submit" value="REGISTER">
                         </form>
                     </div>

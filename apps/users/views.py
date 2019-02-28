@@ -49,7 +49,7 @@ def dashboard(request):
         }
         return render(request, "users/dashboard.html", data)
 
-def edit_page(request):
+def edit_user(request):
     data = {
         "thisUser": User.objects.get(id=request.session['user_id'])
     }
@@ -62,12 +62,17 @@ def update(request):
         for key, value in errors.items():
             messages.error(request, value)
         # redirect the user back to the form to fix the errors
-        return redirect("/edit_page")
+        return redirect("/edit_user")
     else:
         thisUser = User.objects.get(id=request.session['user_id'])
-        thisUser.first_name = request.POST['fname']
-        thisUser.last_name = request.POST['lname']
-        thisUser.email = request.POST['email']
+        thisUser.first_name = request.POST['upd-fname']
+        thisUser.last_name = request.POST['upd-lname']
+        thisUser.street_address = request.POST['upd-address']
+        thisUser.city = request.POST['upd-city']
+        thisUser.state = request.POST['upd-state']
+        thisUser.zip_code = request.POST['upd-zip']
+        thisUser.phone = request.POST['upd-phone']
+        thisUser.email = request.POST['upd-email']
         thisUser.save()
         request.session['user_fname'] = thisUser.first_name
         request.session['user_lname'] = thisUser.last_name

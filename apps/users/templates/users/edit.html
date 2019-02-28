@@ -1,34 +1,25 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>VaccinApp - Edit Account Information</title>
+        <title>VaccinApp - Edit Account Info</title>
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-        <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
         {% load static %}
-        <link href="{% static 'users/edit.css' %}" rel="stylesheet" type="text/css" media="all" />
-        <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
-        <script src="{% static 'users/edit.js' %}"></script>
-        <!--web-fonts-->
+        <!-- CSS links -->
         <link href='//fonts.googleapis.com/css?family=Jura:400,300,500,600' rel='stylesheet' type='text/css'>
-        <!--//web-fonts-->
+        <link href="{% static 'users/css/edit.css' %}" rel="stylesheet" type="text/css" media="all" />
+        <link rel="shortcut icon" href="{%  static 'users/images/favicon.ico' %}">
+        <!-- Script links -->
+        <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+        <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+        <script src="{% static 'users/js/edit.js' %}"></script>
     </head>
     <body>
         <div id="header">
-            <a href="/dashboard">Back</a> | <a href="/logout">Logout</a>
+            <span><a href="/dashboard">Back</a> | <a href="/logout">Logout</a></span>
         </div>
-        <form action='/users/update' method='post'>
-            {% csrf_token %}
-            <h4>Edit My Account Info</h4>
-            <p>First Name</p>
-            <input type="text" name="fname" value="{{ thisUser.first_name }}">
-            <p>Last Name</p>
-            <input type="text" name="lname" value="{{ thisUser.last_name }}">
-            <p>Email</p>
-            <input type="text" name="email" value="{{ thisUser.email }}">
-            <br>
-            <br>
-            <input type="submit" value="Update">
+        <h4>Edit My Account Information</h4>
+        <div class="main">
             {% if messages %}
             <ul class="messages">
                 {% for message in messages %}
@@ -36,6 +27,75 @@
                 {% endfor %}
             </ul>
             {% endif %}
-        </form>
+            <div class="edit-form">
+                <form id="upd" action='/update' onsubmit="return validateForm()" method='post'>
+                    {% csrf_token %}
+                    <input type="text" name="upd-fname" value="{{ thisUser.first_name }}" required maxlength="50">First Name
+                    <input type="text" name="upd-lname" value="{{ thisUser.last_name }}" required maxlength="50">Last Name
+                    <input type="text" name="upd-address" value="{{ thisUser.street_address }}" maxlength="50">Address
+                    <input type="text" name="upd-city" value="{{ thisUser.city }}" maxlength="50">City
+                    <!-- <input type="text" value="{{ thisUser.state }}">State -->
+                    <select name="upd-state">
+                            <option value="AL" {% if thisUser.state == "AL" %} selected {% endif %}>Alabama</option>
+                            <option value="AK" {% if thisUser.state == "AK" %} selected {% endif %}>Alaska</option>
+                            <option value="AZ" {% if thisUser.state == "AZ" %} selected {% endif %}>Arizona</option>
+                            <option value="AK" {% if thisUser.state == "AK" %} selected {% endif %}>Arkansas</option>
+                            <option value="CA" {% if thisUser.state == "CA" %} selected {% endif %}>California</option>
+                            <option value="CO" {% if thisUser.state == "CO" %} selected {% endif %}>Colorado</option>
+                            <option value="CT" {% if thisUser.state == "CT" %} selected {% endif %}>Connecticut</option>
+                            <option value="DE" {% if thisUser.state == "DE" %} selected {% endif %}>Delaware</option>
+                            <option value="DC" {% if thisUser.state == "DC" %} selected {% endif %}>District of Columbia</option>
+                            <option value="FL" {% if thisUser.state == "FL" %} selected {% endif %}>Florida</option>
+                            <option value="GA" {% if thisUser.state == "GA" %} selected {% endif %}>Georgia</option>
+                            <option value="HI" {% if thisUser.state == "HI" %} selected {% endif %}>Hawaii</option>
+                            <option value="ID" {% if thisUser.state == "ID" %} selected {% endif %}>Idaho</option>
+                            <option value="IL" {% if thisUser.state == "IL" %} selected {% endif %}>Illinois</option>
+                            <option value="IN" {% if thisUser.state == "IN" %} selected {% endif %}>Indiana</option>
+                            <option value="IA" {% if thisUser.state == "IA" %} selected {% endif %}>Iowa</option>
+                            <option value="KS" {% if thisUser.state == "KS" %} selected {% endif %}>Kansas</option>
+                            <option value="KY" {% if thisUser.state == "KY" %} selected {% endif %}>Kentucky</option>
+                            <option value="LA" {% if thisUser.state == "LA" %} selected {% endif %}>Louisiana</option>
+                            <option value="ME" {% if thisUser.state == "ME" %} selected {% endif %}>Maine</option>
+                            <option value="MD" {% if thisUser.state == "MD" %} selected {% endif %}>Maryland</option>
+                            <option value="MA" {% if thisUser.state == "MA" %} selected {% endif %}>Massachusetts</option>
+                            <option value="MI" {% if thisUser.state == "MI" %} selected {% endif %}>Michigan</option>
+                            <option value="MN" {% if thisUser.state == "MN" %} selected {% endif %}>Minnesota</option>
+                            <option value="MS" {% if thisUser.state == "MS" %} selected {% endif %}>Mississippi</option>
+                            <option value="MO" {% if thisUser.state == "MO" %} selected {% endif %}>Missouri</option>
+                            <option value="MT" {% if thisUser.state == "MT" %} selected {% endif %}>Montana</option>
+                            <option value="NE" {% if thisUser.state == "NE" %} selected {% endif %}>Nebraska</option>
+                            <option value="NV" {% if thisUser.state == "NV" %} selected {% endif %}>Nevada</option>
+                            <option value="NH" {% if thisUser.state == "NH" %} selected {% endif %}>New Hampshire</option>
+                            <option value="NJ" {% if thisUser.state == "NJ" %} selected {% endif %}>New Jersey</option>
+                            <option value="NM" {% if thisUser.state == "NM" %} selected {% endif %}>New Mexico</option>
+                            <option value="NY" {% if thisUser.state == "NY" %} selected {% endif %}>New York</option>
+                            <option value="NC" {% if thisUser.state == "NC" %} selected {% endif %}>North Carolina</option>
+                            <option value="ND" {% if thisUser.state == "ND" %} selected {% endif %}>North Dakota</option>
+                            <option value="OH" {% if thisUser.state == "OH" %} selected {% endif %}>Ohio</option>
+                            <option value="OK" {% if thisUser.state == "OK" %} selected {% endif %}>Oklahoma</option>
+                            <option value="OR" {% if thisUser.state == "OR" %} selected {% endif %}>Oregon</option>
+                            <option value="PA" {% if thisUser.state == "PA" %} selected {% endif %}>Pennsylvania</option>
+                            <option value="RI" {% if thisUser.state == "RI" %} selected {% endif %}>Rhode Island</option>
+                            <option value="SC" {% if thisUser.state == "SC" %} selected {% endif %}>South Carolina</option>
+                            <option value="SD" {% if thisUser.state == "SD" %} selected {% endif %}>South Dakota</option>
+                            <option value="TN" {% if thisUser.state == "TN" %} selected {% endif %}>Tennessee</option>
+                            <option value="TX" {% if thisUser.state == "TX" %} selected {% endif %}>Texas</option>
+                            <option value="UT" {% if thisUser.state == "UT" %} selected {% endif %}>Utah</option>
+                            <option value="VT" {% if thisUser.state == "VT" %} selected {% endif %}>Vermont</option>
+                            <option value="VA" {% if thisUser.state == "VA" %} selected {% endif %}>Virginia</option>
+                            <option value="WA" {% if thisUser.state == "WA" %} selected {% endif %}>Washington</option>
+                            <option value="WV" {% if thisUser.state == "WV" %} selected {% endif %}>West Virginia</option>
+                            <option value="WI" {% if thisUser.state == "WI" %} selected {% endif %}>Wisconsin</option>
+                            <option value="WY" {% if thisUser.state == "WY" %} selected {% endif %}>Wyoming</option>
+                        </select>State
+                    <input type="text" name="upd-zip" value="{{ thisUser.zip_code }}" maxlength="5">Zip Code
+                    <input type="text" name="upd-phone" value="{{ thisUser.phone }}" maxlength="12">Phone Number
+                    <input type="text" name="upd-email" value="{{ thisUser.email }}" required maxlength="50">Email
+                    <input type="password" name="upd-password" maxlength="50">Password
+                    <input type="password" name="conf-password" maxlength="50">Confirm Password
+                    <input type="submit" value="UPDATE">
+                </form>
+            </div>
+        </div>
     </body>
 </html>
