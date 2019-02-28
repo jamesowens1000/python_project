@@ -24,8 +24,8 @@ class UserManager(models.Manager):
         
         elif pageType == 'update': #Update Page Checks
             
-            if (postData['email'] != userEmail):
-                checkEmail = User.objects.filter(email=postData['email'])
+            if (postData['upd-email'] != userEmail):
+                checkEmail = User.objects.filter(email=postData['upd-email'])
                 if checkEmail:
                     errors['email'] = "A user with this email is already registered. Please enter a different email."
 
@@ -37,11 +37,11 @@ class User(models.Model):
     password = models.CharField(max_length=255)
     first_name = models.CharField(max_length=255)
     last_name = models.CharField(max_length=255)
-    street_address = models.CharField(max_length=255,null=True, blank=True)
-    city = models.CharField(max_length=255,null=True, blank=True)
-    state = models.CharField(max_length=255,null=True, blank=True)
-    zip_code = models.CharField(max_length=255,null=True, blank=True)
-    phone = models.CharField(max_length=255,null=True, blank=True)
+    street_address = models.CharField(max_length=255, blank=True, default="")
+    city = models.CharField(max_length=255, blank=True, default="")
+    state = models.CharField(max_length=255, blank=True, default="")
+    zip_code = models.CharField(max_length=255, blank=True, default="")
+    phone = models.CharField(max_length=255, blank=True, default="")
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
     objects = UserManager()
