@@ -10,4 +10,7 @@ urlpatterns = [
     url(r'viewvaccine/(?P<dependent_id>\d+)$', views.viewvaccine),
     url(r'seevaccines/(?P<dependent_id>\d+)$', views.seevaccines),
     url(r'delete/(?P<dependent_id>\d+)$', views.delete),
+    url(r'edit_child/(?P<dependent_id>\d+)$', views.edit_child),
+    url(r'edit/(?P<dependent_id>\d+)$', views.editchild_page),
+    url(r'edit/(?P<dependent_id>\d+)/save$', views.save_child),
 ]
