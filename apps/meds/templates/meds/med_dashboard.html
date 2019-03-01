@@ -1,89 +1,43 @@
 <!DOCTYPE html>
 <html>
-
-<head>
-    <meta charset="utf-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Vaccines</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS"
-        crossorigin="anonymous">
-    <!-- <link rel="stylesheet" type="text/css" href="/static/index.css">  -->
-
-    <style>
-        * {
-            text-align: center;
-        }
-
-        ul{
-            list-style-type: none;
-        }
-
-        #vs, #vs:hover{
-               color:black;
-               text-decoration: none;
-           }
-
-        #addchild{
-            color:red;
-        }
-
-        h6{
-            color:red;
-            margin-top:-12px;
-        }
-
-    </style>
-</head>
-
-<body>
-    <div class="container">
-        <div class="row">
-            <div class="col">
+    <head>
+        <title>VaccinApp - Dashboard</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        {% load static %}
+        <!-- CSS links -->
+        <link href='//fonts.googleapis.com/css?family=Jura:400,300,500,600' rel='stylesheet' type='text/css'>
+        <link href="{% static 'meds/css/med_dashboard.css' %}" rel="stylesheet" type="text/css" media="all" />
+        <link rel="shortcut icon" href="{%  static 'users/images/favicon.ico' %}">
+        <!-- Script links -->
+        <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+    </head>
+    <body>
+        <div id="header">
+            <div id="headSub">
+                <!-- <img src="../../static/users/images/head_logo.png" alt="VaccinApp Logo"> -->
                 <h3>VaccinApp</h3>
                 <h6>a shot at good health</h6>
             </div>
-            <div class="col">
-                    <p>Welcome, {{users.first_name}}  {{user.last_name}}</p>
-            </div>
-            <div class="col">
-
-                <p> <a href="/edit_user">Edit Account Info</a> | <a href="/logout">Logout</a></p>
-
-            </div>
+            <span id="welcomeSpan">Welcome, {{users.first_name}} {{users.last_name}}</span>
+            <span><a href="/edit_user">Edit Account Info</a> | <a href="/logout">Logout</a></span>
         </div>
-    </div>
-
-    <div class="container">
-        <div class="row">
-            <div class="col">
-
-                
-
-
-
-
-
-            </div>
-
-            <div class="col">
+        <h4>Children</h4>
+        <div class="main">
+            <div class="children-form">
                 <a id="addchild" href="/dashboard/child">ADD A CHILD</a>
-                <ul>
-
-                    {% for child in all_children %}
-                        {% if child.user.id == request.session.user_id %}
-                        <li><b>{{child.first_name|title}} {{child.last_name|title}}</b> </li>
-                        <li>Birthday: {{child.dob|date:"F d, Y"}}</li>
-                        <li>Gender: {{child.gender|title}}</li>
-                        <li><button><a id="vs" href="/dashboard/viewvaccine/{{child.id}}">Vaccine Schedule</a></button></li>
-                        {% endif %}
-                        <li>{% if child.user.id == request.session.user_id %}<a href="/dashboard/delete/{{child.id}}">Delete</a> | <a href="/dashboard/edit_child/{{child.id}}">Edit Child Info</a>{% endif %}</li>
-                    {% endfor %}
+                {% for child in all_children %}
+                <ul id="childInfo">
+                    {% if child.user.id == request.session.user_id %}
+                    <li><b>{{child.first_name}} {{child.last_name}}</b> </li>
+                    <li>Birthday: {{child.dob|date:"F d, Y"}}</li>
+                    <li>Gender: {{child.gender.capitalize}}</li>
+                    <li><button><a id="vs" href="/dashboard/viewvaccine/{{child.id}}">Vaccine Schedule</a></button></li>
+                    {% endif %}
+                    <li>{% if child.user.id == request.session.user_id %}<a class="childLinks" href="/dashboard/delete/{{child.id}}">Delete</a> | <a class="childLinks" href="/dashboard/edit_child/{{child.id}}">Edit Child Info</a>{% endif %}</li>
                 </ul>
-
+                {% endfor %}
             </div>
         </div>
-    </div>
-</body>
-
+    </body>
 </html>
