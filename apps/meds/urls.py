@@ -13,4 +13,5 @@ urlpatterns = [
     url(r'edit_child/(?P<dependent_id>\d+)$', views.edit_child),
     url(r'edit/(?P<dependent_id>\d+)$', views.editchild_page),
     url(r'edit/(?P<dependent_id>\d+)/save$', views.save_child),
+    url(r'tips$', views.tips),
 ]
