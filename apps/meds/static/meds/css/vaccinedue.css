@@ -1,0 +1,259 @@
+/*--reset--*/
+html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,b,u,i,dl,dt,dd,ol,nav ul,nav li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td,article,aside,canvas,details,embed,figure,figcaption,footer,header,hgroup,menu,nav,output,ruby,section,summary,time,mark,audio,video{margin:0;padding:0;border:0;font-size:100%;font:inherit;vertical-align:baseline;}
+article, aside, details, figcaption, figure,footer, header, hgroup, menu, nav, section {display: block;}
+ol,ul{list-style:none;margin:0px;padding:0px;}
+blockquote,q{quotes:none;}
+blockquote:before,blockquote:after,q:before,q:after{content:'';content:none;}
+table{border-collapse:collapse;border-spacing:0;}
+/*--start editing from here--*/
+a{text-decoration:none;}
+.txt-rt{text-align:right;}/* text align right */
+.txt-lt{text-align:left;}/* text align left */
+.txt-center{text-align:center;}/* text align center */
+.float-rt{float:right;}/* float right */
+.float-lt{float:left;}/* float left */
+.clear{clear:both;}/* clear float */
+.pos-relative{position:relative;}/* Position Relative */
+.pos-absolute{position:absolute;}/* Position Absolute */
+.vertical-base{vertical-align:baseline;}/* vertical align baseline */
+.vertical-top{vertical-align:top;}/* vertical align top */
+nav.vertical ul li{display:block;}/* vertical menu */
+nav.horizontal ul li{display: inline-block;}/* horizontal menu */
+img{max-width:100%;}
+/*--end reset--*/
+body {
+    font-family: 'Jura', sans-serif;
+    background:#0a4981;
+}
+#header {
+    background-color: white;
+    min-height: 4em;
+    width: 100%;
+}
+#headSub {
+    height: 100%;
+    width: 300px;
+    margin-right: 60%;
+    display: inline-block;
+    vertical-align: top;
+    text-align: center;
+    font-weight: bolder;
+}
+#headSub h3{
+    font-size: 28px;
+}
+#headSub h6{
+    color: red;
+    font-size: 18px;
+}
+#header span {
+    font-weight: bold;
+    margin-right: 2em;
+    margin-top: 1em;
+    display: inline-block;
+    vertical-align: top;
+}
+h4 {
+    color: #fff;
+    text-align: center;
+    padding: 1em 0 0 0;
+    font-size: 2em;
+    font-weight: 700;
+}
+h5 {
+    color: #fff;
+    text-align: center;
+    padding: 1em 0 0 0;
+    font-size: 1em;
+    font-weight: 600;
+}
+/*-- main --*/
+.main {
+    margin: 4em auto;
+    width: 50%;
+}
+button {
+    outline: none;
+    width: 30%;
+    text-align: center;
+    font-size: 1em;
+    margin: 1em 0 1em 20em;
+    border: none;
+    color: #fff;
+    cursor: pointer;
+    background: #0b4379;
+    box-shadow: 0px 2px 1px rgba(28, 28, 29, 0.42);
+    border-radius: 22px;
+}
+#vs {
+    color: #fff;
+}
+.x {
+    color: red;
+}
+
+/*--vaccs-table--*/
+.w3 {
+    float: right;
+    width: 48%;
+    margin-right: 4%;
+}
+.vaccs-table {
+    background-color: white;
+    padding: 2em 2em;
+	text-align: center;
+}
+.vaccs-table table h6 {
+    text-align: center;
+}
+::-webkit-input-placeholder{
+	color:black !important;
+}
+/*--//vaccs-table--*/
+.tp {
+    margin: 11.2em 0 0;
+}
+/*-- agileits --*/
+/*---- responsive-design -----*/
+@media(max-width:1440px){
+.main {
+    width: 60%;
+}
+}
+@media(max-width:1366px){
+.main {
+    width: 70%;
+}
+}
+@media(max-width:1280px){
+h4 {
+    font-size: 2.5em;
+}
+.main {
+    width: 63%;
+}
+}
+@media(max-width:1080px){
+.main {
+    width: 74%;
+	margin: 2em auto;
+}
+}
+@media(max-width:1024px){
+.main {
+    width: 82%;
+}
+.vaccs-table {
+    padding: 3em 2.5em;
+}
+}
+@media(max-width:991px){
+.main {
+    width: 85%;
+}
+}
+@media(max-width:900px){
+.main {
+    width: 93%;
+}
+}
+@media(max-width:800px){
+.main {
+    width: 51%;
+}
+.w3 {
+    float: none;
+    width: 100%;
+    margin-right: 0;
+    margin-bottom: 5%;
+}
+.vaccs-table p a {
+    line-height: 1.8em;
+}
+}
+@media(max-width:768px){
+.main {
+    width: 53%;
+}
+}
+@media(max-width:736px){
+.main {
+    width: 55%;
+}
+}
+/*-- w3layouts --*/
+@media(max-width:667px){
+.main {
+    width: 61%;
+}
+}
+@media(max-width:640px){
+.main {
+    width: 64%;
+}
+}
+@media(max-width:600px){
+.main {
+    width: 68%;
+}
+}
+@media(max-width:568px){
+.main {
+    width: 72%;
+}
+}
+@media(max-width:480px){
+.main {
+    width: 78%;
+}
+.w3 {
+    margin-bottom: 0%;
+}
+h4 {
+    font-size: 2.2em;
+}
+.vaccs-table {
+    padding: 2em 2em;
+}
+/*-- agileits --*/
+}
+@media(max-width:414px){
+.vaccs-table {
+    padding: 2em 1.5em;
+}
+.tp {
+    margin: 1.7em 0 0;
+}
+.vaccs-table h3 {
+    margin-bottom: 1em;
+}
+}
+@media(max-width:384px){
+h4 {
+    font-size: 2em;
+}}
+@media(max-width:375px){
+.main {
+    width: 79%;
+}}
+@media(max-width:320px){
+h4 {
+    font-size: 1.6em;
+}
+.main {
+    width: 89%;
+    margin: 1.5em auto;
+}
+.vaccs-table {
+    padding: 1.5em 1.5em;
+}
+.vaccs-table h3 {
+    font-size: 1.5em;
+}
+.vaccs-table p a {
+    font-size: 0.9em;
+}
+.vaccs-table p a {
+    line-height: 1.5em;
+}}
+/*--//responsive-design---*/

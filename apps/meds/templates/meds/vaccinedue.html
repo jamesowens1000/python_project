@@ -1,69 +1,36 @@
 <!DOCTYPE html>
 <html>
-
-<head>
-    <meta charset="utf-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Vaccines</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS"
-        crossorigin="anonymous">
-    <!-- <link rel="stylesheet" type="text/css" href="/static/index.css">  -->
-
-    <style>
-        * {
-            text-align: center;
-        }
-
-        h6 {
-            color: red;
-            margin-top: -12px;
-        }
-
-        #vs,
-        #vs:hover {
-            color: black;
-            text-decoration: none;
-        }
-
-        .x {
-            color: red;
-        }
-
-        .space {
-            height: 500px;
-        }
-    </style>
-
-</head>
-
-<body>
-    <div class="border">
-        <div class="container">
-            <div class="row">
-                <div class="col">
-                    <h3>VaccinApp</h3>
-                    <h6>a shot at good health</h6>
-                </div>
-                <div class="col">
-                </div>
-                <div class="col">
-                    <a href="/dashboard">Back</a> | <a href="/logout">Logout</a></p>
-                </div>
+    <head>
+        <title>VaccinApp - Vaccine Schedule</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        {% load static %}
+        <!-- CSS links -->
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+        <link href='//fonts.googleapis.com/css?family=Jura:400,300,500,600' rel='stylesheet' type='text/css'>
+        <link href="{% static 'meds/css/vaccinedue.css' %}" rel="stylesheet" type="text/css" media="all" />
+        <link rel="shortcut icon" href="{%  static 'users/images/favicon.ico' %}">
+        <!-- Script links -->
+        <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+    </head>
+    <body>
+        <div id="header">
+            <div id="headSub">
+                <!-- <img src="../../static/users/images/head_logo.png" alt="VaccinApp Logo"> -->
+                <h3>VaccinApp</h3>
+                <h6>a shot at good health</h6>
             </div>
+            <span><a href="/dashboard">Back</a> | <a href="/logout">Logout</a></span>
         </div>
-
-        <div class="col">
-
-            <h1>{{child_info.first_name|title}} {{child_info.last_name|title}}</h1>
+        <div class="main">
+            <h4>{{child_info.first_name|title}} {{child_info.last_name|title}}</h4>
             {% if length_vac == 0 %}
-            <td>There are no upcoming vaccinations due for {{child_info.first_name|title}}.</td>
+            <h5>There are no upcoming vaccinations due for {{child_info.first_name|title}}.</h5>
             {% endif %}
-
-            <table class="table table-striped">
-                {% if length_vac > 0 %}
-                <h4>Upcoming Vaccinations</h4><button><a id="vs" href="#">Make Appointment</a></button>
-
+            {% if length_vac > 0 %}
+            <h5>Upcoming Vaccinations</h5>
+            <button><a id="vs" href="#">Make Appointment</a></button>
+            <table class="vaccs-table table table-striped">
                 <tr>
                     <th></th>
                     <th>Vaccine</th>
@@ -77,18 +44,9 @@
                     <td>{{vac.abbreviation}}</td>
                     <td><a href="{{vac.url}}">Learn More</a></td>
                 </tr>
-                
                 {% endfor %}
-                {% endif %}
             </table>
+            {% endif %}
         </div>
-
-
-    </div>
-    </div>
-    <div class="space">
-
-    </div>
-</body>
-
+    </body>
 </html>
