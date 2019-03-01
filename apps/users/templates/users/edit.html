@@ -16,6 +16,11 @@
     </head>
     <body>
         <div id="header">
+            <div id="headSub">
+                <!-- <img src="../../static/users/images/head_logo.png" alt="VaccinApp Logo"> -->
+                <h3>VaccinApp</h3>
+                <h6>a shot at good health</h6>
+            </div>
             <span><a href="/dashboard">Back</a> | <a href="/logout">Logout</a></span>
         </div>
         <h4>Edit My Account Information</h4>
@@ -36,6 +41,7 @@
                     <input type="text" name="upd-city" value="{{ thisUser.city }}" maxlength="50">City
                     <!-- <input type="text" value="{{ thisUser.state }}">State -->
                     <select name="upd-state">
+                            <option value="">Select State</option>
                             <option value="AL" {% if thisUser.state == "AL" %} selected {% endif %}>Alabama</option>
                             <option value="AK" {% if thisUser.state == "AK" %} selected {% endif %}>Alaska</option>
                             <option value="AZ" {% if thisUser.state == "AZ" %} selected {% endif %}>Arizona</option>

@@ -1,83 +1,41 @@
 <!DOCTYPE html>
 <html>
-
-<head>
-    <meta charset="utf-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Vaccines</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS"
-        crossorigin="anonymous">
-    <!-- <link rel="stylesheet" type="text/css" href="/static/index.css">  -->
-    <style>
-        * {
-                text-align: center;
-            
-            }
-
-            .form-group{
-                float:left;
-            }
-
-            .around_form{
-                height:500px;
-                width: 260px;
-                margin-left:600px;
-            }
-
-            h6{
-            color:red;
-            margin-top:-12px;
-        }
-
-        </style>
-
-</head>
-
-<body>
-
-    <div class="container">
-        <div class="row">
-            <div class="col">
-                    <h3>VaccinApp</h3>
-                    <h6>a shot at good health</h6>
+    <head>
+        <title>VaccinApp - Edit Child / Dependent</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        {% load static %}
+        <!-- CSS links -->
+        <link href='//fonts.googleapis.com/css?family=Jura:400,300,500,600' rel='stylesheet' type='text/css'>
+        <link href="{% static 'meds/css/child.css' %}" rel="stylesheet" type="text/css" media="all" />
+        <link rel="shortcut icon" href="{%  static 'users/images/favicon.ico' %}">
+        <!-- Script links -->
+        <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+    </head>
+    <body>
+        <div id="header">
+            <div id="headSub">
+                <!-- <img src="../../static/users/images/head_logo.png" alt="VaccinApp Logo"> -->
+                <h3>VaccinApp</h3>
+                <h6>a shot at good health</h6>
             </div>
-            <div class="col">
-            </div>
-            <div class="col">
-                <p><a href="/dashboard">Back</a> | <a href="/update">Edit Account Info</a> | <a href="/logout">Logout</a></p>
-            </div>
+            <span><a href="/dashboard">Back</a> | <a href="/logout">Logout</a></span>
         </div>
-    </div>
-
-    <h4>Update child information.</h4>
-    <br>
-    <div class="around_form">
-        <form action='/dashboard/edit/{{child_form.id}}/save' method='post'>
-            {% csrf_token %}
-            <div class="form-group">
-                First Name: <input type="text" name='child_first' value="{{child_form.first_name}}">
-            </div>
-            <div class="form-group">
-                Last Name: <input type="text" name='child_last' value="{{child_form.last_name}}">
-            </div>
-            <div class="form-group">
-                Birthday: <input class="dob" type="date" name='dob' value="{{dob}}">
-            </div>
-            <div class="form-group">
-                 
-                Gender: <input type="radio" name="gender" value="male" {% if child_form.gender == "male" %} checked {% endif %}>Male
-                        <input type="radio" name="gender" value="female" {% if child_form.gender == "female" %} checked {% endif %}>Female
-            </div>
-            <div class="form-group">
-                Height: <input type="number" name="feet" style=" width: 50px;" min="0" max="8"> feet
-                <input type="number" name="inches" style=" width: 50px;" min="0" max="36"> inches
-            </div>
-            <div class="form-group">
-                Weight: <input type="text" name="weight" style=" width: 50px;" value="{{child_form.weight}}"> pounds <br>
-            </div>
-            <div class="form-group">
-                Blood Type: <select class="form-control-sm" name="blood">
+        <h4>Update child information</h4>
+        <div class="main">
+            <form class="edit-form" action='/dashboard/edit/{{child_form.id}}/save' method='post'>
+                {% csrf_token %}
+                <input type="text" name='child_first' value="{{child_form.first_name}}">First Name
+                <input type="text" name='child_last' value="{{child_form.last_name}}">Last Name
+                <input class="dob" type="date" name='dob' value="{{dob}}">Birthday
+                <p>
+                    <input type="radio" name="gender" value="male" {% if child_form.gender == "male" %} checked {% endif %}>Male
+                    <input type="radio" name="gender" value="female" {% if child_form.gender == "female" %} checked {% endif %}>Female
+                </p>Gender
+                <input type="number" name="feet" min="0" max="8">Height (in feet)
+                <input type="number" name="inches" min="0" max="36">Height (in inches)
+                <input type="text" name="weight" value="{{child_form.weight}}">Weight (pounds)
+                <select class="form-control-sm" name="blood">
                     <option value="idk">I don't know</option>
                     <option value="o_pos">O+</option>
                     <option value="o_neg">O-</option>
@@ -87,19 +45,9 @@
                     <option value="b_pos">B+</option>
                     <option value="ab_neg">AB-</option>
                     <option value="ab_pos">AB+</option>
-
-                </select>
-                <br>
-            </div>
-
-            <div class="form-group">
-                <input type="submit" class="btn btn-warning" value="Save">
-            </div>
-            
-        </form>
-
-    </div>
-    
-</body>
-
+                </select>Blood Type
+                <input type="submit" class="btn btn-warning" value="SAVE">
+            </form>
+        </div>
+    </body>
 </html>
