@@ -51,17 +51,11 @@ def addchild(request):#button
 
     
 
-    request.session['dob']=request.POST['dob']
+
     return redirect('/dashboard')
 
 
-# def vaccines(request): #button
-#     today = datetime.now()
-#     dob = datetime(2017,8,15) #POST REQUEST['dob']- session
-#     difference = relativedelta.relativedelta(today,dob)
-#     request.session["months_old"] = difference.years * 12 + difference.months
-    
-#     return redirect(request,'/seevaccines')
+
 
 def seevaccines(request, dependent_id):#page
     the_child=Dependent.objects.get(id=dependent_id)
@@ -77,6 +71,8 @@ def seevaccines(request, dependent_id):#page
     months_old = difference.years * 12 + difference.months
     print("The child is " +str(months_old)+ " months old")
     
+    child_vac=[]
+
     if months_old <=1:
         age_grp=Age_Group.objects.get(id=1)# the age group the kid falls into
         child_vac=age_grp.vaccinations.all()#getting vacs for the age group
@@ -108,10 +104,13 @@ def seevaccines(request, dependent_id):#page
         age_grp=Age_Group.objects.get(id=10)# the age group the kid falls into
         child_vac=age_grp.vaccinations.all()#getting vacs for the age group
 
-
+    length=len(child_vac)
+    print("///////////////")
+    
     context={
         'child_info':the_child,
         'child_vacs':child_vac,
+        'length_vac':length
 
     }
     
@@ -185,6 +184,10 @@ def save_child(request, dependent_id): #save new child info button
 
 
     return redirect('/dashboard')
+
+def tips(request):
+
+    return render(request,'meds/tips.html')
 
 def delete(request, dependent_id):
     delete_child= Dependent.objects.get(id=dependent_id)

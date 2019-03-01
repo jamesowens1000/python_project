@@ -72,9 +72,9 @@
 
                     {% for child in all_children %}
                         {% if child.user.id == request.session.user_id %}
-                        <li><b>{{child.first_name}} {{child.last_name}}</b> </li>
+                        <li><b>{{child.first_name|title}} {{child.last_name|title}}</b> </li>
                         <li>Birthday: {{child.dob|date:"F d, Y"}}</li>
-                        <li>Gender: {{child.gender}}</li>
+                        <li>Gender: {{child.gender|title}}</li>
                         <li><button><a id="vs" href="/dashboard/viewvaccine/{{child.id}}">Vaccine Schedule</a></button></li>
                         {% endif %}
                         <li>{% if child.user.id == request.session.user_id %}<a href="/dashboard/delete/{{child.id}}">Delete</a> | <a href="/dashboard/edit_child/{{child.id}}">Edit Child Info</a>{% endif %}</li>
