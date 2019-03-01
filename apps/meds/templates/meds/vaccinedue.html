@@ -24,6 +24,15 @@
         #vs:hover {
             color: black;
             text-decoration: none;
+        }
+
+        .x {
+            color: red;
+        }
+
+        .space {
+            height: 500px;
+        }
     </style>
 
 </head>
@@ -46,28 +55,39 @@
 
         <div class="col">
 
-            <h1>{{child_info.first_name}} {{child_info.last_name}}</h1>
+            <h1>{{child_info.first_name|title}} {{child_info.last_name|title}}</h1>
+            {% if length_vac == 0 %}
+            <td>There are no upcoming vaccinations due for {{child_info.first_name|title}}.</td>
+            {% endif %}
 
             <table class="table table-striped">
-                <h3>Upcoming Vaccinations</h3><button><a id="vs" href="/test">Make Appointment</a></button>
+                {% if length_vac > 0 %}
+                <h4>Upcoming Vaccinations</h4><button><a id="vs" href="#">Make Appointment</a></button>
+
                 <tr>
+                    <th></th>
                     <th>Vaccine</th>
                     <th>Abbreviation</th>
-                    <th>Description</th>
+                    <th></th>
                 </tr>
                 {% for vac in child_vacs %}
                 <tr>
+                    <td><a class="x" href="#">X</a></td>
                     <td>{{vac.name}}</td>
                     <td>{{vac.abbreviation}}</td>
-                    <td>{{vac.description}}</td>
-
+                    <td><a href="{{vac.url}}">Learn More</a></td>
                 </tr>
-               {% endfor %}
+                
+                {% endfor %}
+                {% endif %}
             </table>
         </div>
 
 
-        </div>
+    </div>
+    </div>
+    <div class="space">
+
     </div>
 </body>
 
